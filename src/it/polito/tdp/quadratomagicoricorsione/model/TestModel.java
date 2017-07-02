@@ -15,10 +15,18 @@ public class TestModel {
 		
 		Long stop = System.nanoTime();
 		
-		if(solutions!=null){
+		if(solutions!=null && solutions.size()>0){
+			
 			System.out.println("Trovata almeno una soluzione in "+(stop-start)/1e9+" secondi.\n");
+			
+			for(Square s : solutions){
+				System.out.println(s.toString());
+			}
+			
 		}else{
+			
 			System.out.println("Nessuna soluzione trovata.\n");
+			
 		}
 
 	}

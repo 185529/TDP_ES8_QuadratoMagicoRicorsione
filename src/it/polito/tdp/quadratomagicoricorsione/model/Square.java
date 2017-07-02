@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Square {
 	
+	private static int nextID = 0;
+	private final int ID;
+	
 	private int N;
 	private int N2;
 	int magicConst;
@@ -20,13 +23,37 @@ public class Square {
 		this.N2 = N*N;
 		this.magicConst = N*(N*N+1)/2;
 		this.griglia = new ArrayList<Integer>();
+		ID = nextID;
+		nextID++;
+	}
+
+	public Square(Square square) {
+		super();
+		this.N = square.getN();
+		this.N2 = N*N;
+		this.magicConst = N*(N*N+1)/2;
+		this.griglia = new ArrayList<Integer>(square.getGriglia());
+		ID = nextID;
+		nextID++;
+	}
+	
+	public int getID(){
+		return this.ID;
+	}
+
+	public List<Integer> getGriglia() {
+		return this.griglia;
+	}
+
+	public int getN() {
+		return this.N;
 	}
 
 	/**
 	 * @return the n2
 	 */
 	public int getN2() {
-		return N2;
+		return this.N2;
 	}
 
 	public boolean chackMagicConst() {
@@ -115,11 +142,11 @@ public class Square {
 	}
 
 	public void add(int i) {
-		griglia.add(i);		
+		griglia.add(i);
 	}
 
-	public void remove(int pos) {
-		griglia.remove(pos);	
+	public void remove(int number) {
+		griglia.remove(Integer.valueOf(number));
 	}
 
 	public boolean contains(int i) {
@@ -127,7 +154,7 @@ public class Square {
 	}
 	
 	public String toString(){
-		return griglia.toString();
+		return this.ID + " " + griglia.toString();
 	}
 
 }

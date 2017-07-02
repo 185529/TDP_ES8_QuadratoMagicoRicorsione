@@ -15,6 +15,8 @@ public class Model {
 		
 		Square square = new Square(dim);
 		
+		System.out.println("Square ID: "+square.getID());
+		
 		// chiamo funzione ricorsiva
 		
 		int step = 0;
@@ -24,6 +26,7 @@ public class Model {
 		// ritorno le soluzioni trovate
 		
 		return solutions;
+		
 	}
 	
 	private void recursive(Square square, int step){
@@ -34,7 +37,9 @@ public class Model {
 			// valuto soluzione
 			
 			if(square.chackMagicConst()){
-				solutions.add(square);
+				
+				solutions.add(new Square(square));
+				
 			}
 			
 			return;
@@ -55,7 +60,7 @@ public class Model {
 			
 				// D -- rimuovo numero
 
-				square.remove(step);
+				square.remove(i);
 				
 			}
 			
